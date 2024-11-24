@@ -1,0 +1,9 @@
+<div *ngIf="isLoading | async" class="loading-screen">
+    <!-- Aquí puedes poner tu pantalla de carga, por ejemplo, un spinner -->
+    <!-- <p-progressSpinner ariaLabel="loading" /> -->
+    <!-- <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" /> -->
+    <p-progressSpinner 
+    styleClass="w-4rem h-4rem" 
+    strokeWidth="8" 
+    animationDuration=".5s" />
+</div>

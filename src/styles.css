@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+/* Order */
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+    & button {
+        box-shadow: none;
+    }
+}
+
+@layer primeng {
+    /* .p-inputtext {
+      height: 1.5rem;
+    } */
+
+    button {
+        border-radius: 1rem !important;
+        padding-block: 0.5rem !important;
+        font-size: small !important;
+    }
+  }
+
+/* .p-button {
+    border-radius: 2rem;
+} */
+
+.row-form {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.label-form {
+    /* height: 1.5rem; */
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    justify-content: right;
+}

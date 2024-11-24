@@ -1,0 +1,119 @@
+<p-button (onClick)="onClickStorie()" icon="pi pi-pen-to-square" [link]="true" />
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap">
+                Historias
+            </span>
+
+        </div>
+    </ng-template>
+    <p-table [value]="stories" [tableStyle]="{ 'min-width': '45rem' }" scrollable="true" [scrollHeight]="'20rem'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Descripción</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-storie>
+            <tr>
+                <td>{{storie.titulo}}</td>
+                <td>
+                    <p-button label="tickets" [link]="true" severity="secondary"
+                        (onClick)="showDialogTicket(storie.id)" />
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+        <p-button label="Agregar historia" [text]="true" severity="secondary" (onClick)="showDialogCreate()" />
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Header" [(visible)]="visibleCreate" [modal]="true" [style]="{ width: '30rem' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap">
+                Nueva historia
+            </span>
+        </div>
+    </ng-template>
+    <!-- formulario -->
+    <form>
+        <div class="mx-auto">
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="titulo" type="text" pInputText style="width: 100%;" [(ngModel)]="title"
+                        [ngModelOptions]="{standalone: true}" />
+                    <label for="titulo">descripción</label>
+                </p-floatLabel>
+            </div>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button label="Aceptar" [text]="true" severity="secondary" (onClick)="create()" />
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Header" [(visible)]="visibleTickets" [modal]="true" [style]="{ width: '50rem' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap">
+                Tickets
+            </span>
+
+        </div>
+    </ng-template>
+    <p-table [value]="tickets" [tableStyle]="{ 'width': '45' }" scrollable="true" [scrollHeight]="'20rem'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Descripción</th>
+                <th>Comentarios</th>
+                <th class="text-center">Estado</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ticket>
+            <tr>
+                <td>{{ticket.descripcion}}</td>
+                <td>{{ticket.comentarios}}</td>
+                <td class="text-center" [style]="{'color': setColor(ticket.estado)}">{{ticket.estado === 'En Proceso' ?
+                    'Proceso' : ticket.estado}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <ng-template pTemplate="footer">
+        <p-button label="Agregar ticket" [text]="true" severity="secondary" (onClick)="showDialogCreateTicket()" />
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Header" [(visible)]="visibleCreateTicket" [modal]="true" [style]="{ width: '30rem' }">
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <span class="font-bold white-space-nowrap">
+                Nuevo ticket
+            </span>
+        </div>
+    </ng-template>
+    <!-- formulario -->
+    <form>
+        <div class="mx-auto">
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="descripcion" type="text" pInputText style="width: 100%;"
+                        [(ngModel)]="formTicket.descripcion" [ngModelOptions]="{standalone: true}" />
+                    <label for="descripcion">descripción</label>
+                </p-floatLabel>
+            </div>
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="comentario" type="text" pInputText style="width: 100%;"
+                        [(ngModel)]="formTicket.comentarios" [ngModelOptions]="{standalone: true}" />
+                    <label for="comentario">comentarios</label>
+                </p-floatLabel>
+            </div>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button label="Aceptar" [text]="true" severity="secondary" (onClick)="createTicket()" />
+    </ng-template>
+</p-dialog>

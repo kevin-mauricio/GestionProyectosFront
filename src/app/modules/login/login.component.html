@@ -1,0 +1,35 @@
+<app-loading [isLoading]="loading"></app-loading>
+
+<div class="fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <p-card header="Inicio de sesión">
+        <div class="card-size">
+            <form [formGroup]="form" (ngSubmit)="onSubmitLogin()">
+                <div class="row row-form">
+                    <div class="col-3">
+                        <label class="label-form">Correo: </label>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <input formControlName="email" type="email" pInputText
+                            [ngClass]="formUtil.isRequired(this.form.get('email'), isInvalidForm )" />
+                    </div>
+                </div>
+                <div class="row row-form">
+                    <div class="col-3">
+                        <label class="label-form">Contraseña: </label>
+                    </div>
+                    <div class="col-auto d-flex align-items-center">
+                        <input formControlName="pass" type="password" pInputText
+                            [ngClass]="formUtil.isRequired(this.form.get('pass'), isInvalidForm )" />
+                    </div>
+                </div>
+                <div class="row p-3 text-center">
+                    <p-button label="Ingresar" type="submit" />
+                </div>
+                <div class="row text-end">
+                    <app-create-account (isCreated)="showAlert()"></app-create-account>
+                </div>
+            </form>
+        </div>
+    </p-card>
+</div>
+<p-toast></p-toast>

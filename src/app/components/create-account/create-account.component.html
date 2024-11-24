@@ -1,0 +1,48 @@
+<p-button label="Crear cuenta" (onClick)="showDialog()" [link]="true" />
+<p-dialog class="p-fluid" header="Creando cuenta..." [modal]="true" [(visible)]="visible" [style]="{ width: '30rem' }">
+    <span class="p-text-secondary block mb-5">Por favor, ingresa los siguientes datos</span>
+    <form>
+        <div class="mx-auto" style="width: 90%;">
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="username" type="text" pInputText [(ngModel)]="formCreateAccount.name"
+                        [ngModelOptions]="{standalone: true}" />
+                    <label for="username">Nombre</label>
+                </p-floatLabel>
+            </div>
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="email" type="email" pInputText [(ngModel)]="formCreateAccount.email"
+                        [ngModelOptions]="{standalone: true}" />
+                    <label for="email">Correo</label>
+                </p-floatLabel>
+            </div>
+            <div class="row mt-4 text-start">
+                <p-floatLabel>
+                    <p-dropdown [options]="companies" optionLabel="nombre" [(ngModel)]="formCreateAccount.compania_id"
+                        [ngModelOptions]="{standalone: true}" />
+                    <label for="username">Compania</label>
+                </p-floatLabel>
+            </div>
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="pass" type="password" pInputText [(ngModel)]="formCreateAccount.password"
+                        [ngModelOptions]="{standalone: true}" />
+                    <label for="pass">Contraseña</label>
+                </p-floatLabel>
+            </div>
+            <div class="row mt-4">
+                <p-floatLabel>
+                    <input id="pass_confirm" type="password" pInputText
+                        [(ngModel)]="formCreateAccount.password_confirmation" [ngModelOptions]="{standalone: true}" />
+                    <label for="pass_confirm">Confirmar contraseña</label>
+                </p-floatLabel>
+            </div>
+        </div>
+
+    </form>
+    <div class="flex justify-content-center gap-2 mt-3">
+        <p-button label="Crear" (onClick)="onClickCreate()" />
+    </div>
+</p-dialog>
+<p-toast></p-toast>
